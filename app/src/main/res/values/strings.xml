@@ -1,0 +1,81 @@
+<resources>
+    <string name="app_name">Ambulance</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <array name="cities">
+        <item>Mumbai</item>
+        <item>Delhi</item>
+        <item>Banglore</item>
+        <item>Hyderabad</item>
+        <item>Ahemadabad</item>
+        <item>Chennai</item>
+        <item>Kolkata</item>
+        <item>Surat</item>
+        <item>Pune</item>
+        <item>Jaipur</item>
+        <item>Lucknow</item>
+        <item>Kanpur</item>
+        <item>Nagpur</item>
+        <item>Indore</item>
+        <item>Thane</item>
+        <item>Bhopal</item>
+        <item>Visakhapatnam</item>
+        <item>Pimpri and Chinchwad</item>
+        <item>Patna</item>
+        <item>Vadodara</item>
+        <item>GGhaziabad</item>
+        <item>Ludhina</item>
+        <item>Agra</item>
+        <item>Nashik</item>
+        <item>Faridabad</item>
+        <item>Meerut</item>
+        <item>Rajkot</item>
+        <item>kalyan and Dombivali</item>
+        <item>Vasi virar</item>
+        <item>Varansi</item>
+        <item>Srinagar</item>
+        <item>Aurangabad</item>
+        <item>Dhanbad</item>
+        <item>Amritsar</item>
+        <item>Navi Mumbai</item>
+        <item>Allahabad</item>
+        <item>Ranchi</item>
+        <item>Haora</item>
+        <item>Coimbatore</item>
+        <item>Jabalpur</item>
+        <item>Gwalior</item>
+        <item>Vijayawada</item>
+        <item>jodhpur</item>
+        <item>Madurai</item>
+
+
+    </array>
+    <string name="title_activity_home">Contact</string>
+    <string name="title_activity_splash_screen">Ambulance</string>
+    <string name="road">Road</string>
+    <string name="rail">Rail</string>
+    <string name="air">Air</string>
+    <string name="chartered">Chartered</string>
+    <string name="regular">Regular</string>
+    <string name="to">To :</string>
+    <string name="from">From :</string>
+    <string name="departure">Patient departure :</string>
+    <string name="via">Via :</string>
+    <string name="title_activity_diagnosis">DiagnosisActivity</string>
+    <string name="patientDiagonosis">Patient Diagnosis</string>
+    <string name="presentState">Present State</string>
+    <string name="medication">Medication</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="doctor">Doctor Required</string>
+    <string name="ventilator_yes">Ventilator</string>
+    <string name="ventilator_no">Non Ventilator</string>
+    <string name="next">Next</string>
+    <string name="transport">Transport Media :</string>
+    <string name="title_activity_transport_check">Transport</string>
+    <string name="dial">Dial Us</string>
+    <string name="error">It seems you\'re offline you still can call us , Just click the  \"dial us\" Button.</string>
+    <string name="contact_person">Contact Person</string>
+    <string name="contact">Contact Number</string>
+</resources>
