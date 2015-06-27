@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
     android:orientation="vertical">
 
     <include xmlns:android="http://schemas.android.com/apk/res/android"
@@ -39,6 +40,7 @@
                 android:background="@drawable/textview_background"
                 android:inputType="textCapCharacters"
                 android:isScrollContainer="true"
+                android:maxLines="10"
                 android:padding="10dp" />
 
             <TextView

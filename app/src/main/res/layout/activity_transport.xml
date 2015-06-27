@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
     android:orientation="vertical">
 
     <include xmlns:android="http://schemas.android.com/apk/res/android"
@@ -14,6 +15,7 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
+            android:id="@+id/online_ll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -33,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:focusable="true"
+
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -54,7 +56,7 @@
                     android:id="@+id/air"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+
                     android:text="@string/air" />
             </RadioGroup>
 
@@ -63,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-
+                android:layout_margin="10dp"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -86,24 +88,25 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:orientation="horizontal"
-                android:padding="10dp">
+                android:padding="10dp"
+                android:weightSum="1">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/textView3"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-
-                    android:layout_weight="0.4"
+                    android:layout_weight="0.5"
                     android:text="@string/from"
                     android:textColor="@color/primary_text" />
 
                 <AutoCompleteTextView
                     android:id="@+id/from"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_weight="0.6"
+                    android:layout_width="96dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="0.5"
                     android:background="@drawable/textview_background"
-                    android:hint="@string/from" />
+                    android:hint="@string/from"
+                    android:padding="2dp" />
 
             </LinearLayout>
 
@@ -112,42 +115,47 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:orientation="horizontal"
-                android:padding="10dp">
+                android:padding="10dp"
+                android:weightSum="1">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/text_to"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-
-                    android:layout_weight="0.4"
+                    android:layout_weight="0.5"
                     android:text="@string/to"
                     android:textColor="@color/primary_text" />
 
                 <AutoCompleteTextView
                     android:id="@+id/to"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_weight="0.6"
+                    android:layout_width="96dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="0.5"
                     android:background="@drawable/textview_background"
-                    android:hint="@string/to" />
+                    android:hint="@string/to"
+                    android:padding="2dp" />
+
 
             </LinearLayout>
+
 
             <Button
                 android:id="@+id/next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
+                android:layout_gravity="end"
                 android:background="@drawable/custom_bg"
                 android:onClick="nextButtonClick"
-                android:shadowColor="@color/icons"
+                android:shadowColor="@color/secondary_text"
                 android:shadowRadius="2"
-                android:text="@string/next" />
+                android:text="@string/next"
+                android:textColor="@color/icons" />
 
         </LinearLayout>
     </ScrollView>
 
     <LinearLayout
+        android:id="@+id/offline_ll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -164,26 +172,37 @@
             android:textStyle="bold" />
 
         <Button
-            android:layout_gravity="center"
             android:id="@+id/reload"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:background="@drawable/refresh"
-            android:gravity="center" />
+            android:background="@drawable/custom_bg"
+            android:gravity="center"
+            android:shadowColor="@color/secondary_text"
+            android:text="@string/refresh"
+            android:textColor="@color/icons" />
 
         <Button
-            android:id="@+id/dialus1"
+            android:id="@+id/dial1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="@drawable/custom_bg" />
+            android:background="@drawable/custom_bg"
+            android:onClick="dialUs"
+            android:shadowColor="@color/secondary_text"
+            android:text="@string/dial"
+            android:textColor="@color/icons" />
 
         <Button
-            android:id="@+id/dialus2"
+            android:id="@+id/dial2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="@drawable/custom_bg" />
+            android:background="@drawable/custom_bg"
+            android:onClick="dialUs"
+            android:shadowColor="@color/secondary_text"
+            android:text="@string/dial"
+            android:textColor="@color/icons" />
     </LinearLayout>
 </LinearLayout>

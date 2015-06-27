@@ -15,18 +15,18 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class TransportCheck extends AppCompatActivity implements View.OnClickListener {
     RadioGroup transport_radio_grp, air_check_grp;
     RadioButton road, rail, air, charter, regular;
-    TextView offline_error;
     Button dial_us1, dial_us2, next;
     AutoCompleteTextView from, to;
     Toolbar toolbar;
+    LinearLayout online, offline;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +63,8 @@ public class TransportCheck extends AppCompatActivity implements View.OnClickLis
     }
 
     private void init() {
+        offline = (LinearLayout) findViewById(R.id.offline_ll);
+        online = (LinearLayout) findViewById(R.id.online_ll);
         transport_radio_grp = (RadioGroup) findViewById(R.id.transport);
         air_check_grp = (RadioGroup) findViewById(R.id.charter_or_regular);
         air_check_grp.setVisibility(View.GONE);
@@ -73,12 +75,9 @@ public class TransportCheck extends AppCompatActivity implements View.OnClickLis
         regular = (RadioButton) findViewById(R.id.regular);
         from = (AutoCompleteTextView) findViewById(R.id.from);
         to = (AutoCompleteTextView) findViewById(R.id.to);
-        offline_error = (TextView) findViewById(R.id.offline_text);
         dial_us1 = (Button) findViewById(R.id.dial1);
         dial_us2 = (Button) findViewById(R.id.dial2);
         next = (Button) findViewById(R.id.next);
-
-
     }
 
     public boolean onLine() {
@@ -89,16 +88,11 @@ public class TransportCheck extends AppCompatActivity implements View.OnClickLis
             NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
 
             if (netInfo == null) {
-                offline_error.setVisibility(View.VISIBLE);
-                next.setVisibility(View.GONE);
-                dial_us1.setVisibility(View.VISIBLE);
-                dial_us2.setVisibility(View.VISIBLE);
+                online.setVisibility(View.GONE);
                 Toast.makeText(this, "Internet connection not available", Toast.LENGTH_LONG).show();
 
             } else {
-                dial_us1.setVisibility(View.GONE);
-                dial_us2.setVisibility(View.GONE);
-                offline_error.setVisibility(View.GONE);
+                offline.setVisibility(View.GONE);
                 Toast.makeText(this, "Internet connection available", Toast.LENGTH_LONG).show();
 
             }
@@ -162,6 +156,8 @@ public class TransportCheck extends AppCompatActivity implements View.OnClickLis
                 Intent callIntent2 = new Intent(Intent.ACTION_DIAL, number2);
                 startActivity(callIntent2);
                 break;
+            default:
+                Toast.makeText(this, "some kind of error!", Toast.LENGTH_SHORT).show();
         }
     }
 
