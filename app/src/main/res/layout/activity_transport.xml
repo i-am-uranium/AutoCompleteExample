@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/transport_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusableInTouchMode="true"
@@ -25,7 +26,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:text="@string/transport"
                 android:textColor="@color/primary_text"
                 android:textStyle="bold" />
@@ -83,60 +83,56 @@
                     android:text="@string/regular" />
             </RadioGroup>
 
-            <LinearLayout
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/from_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                android:weightSum="1">
+                android:layout_margin="10dp">
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="@string/from"
-                    android:textColor="@color/primary_text" />
+                <!--<TextView-->
+                <!--android:id="@+id/textView3"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="0.5"-->
+                <!--android:text="@string/from"-->
+                <!--android:textColor="@color/primary_text" />-->
 
                 <AutoCompleteTextView
                     android:id="@+id/from"
-                    android:layout_width="96dp"
+                    android:layout_width="match_parent"
                     android:layout_height="36dp"
-                    android:layout_weight="0.5"
+                    android:layout_margin="10dp"
                     android:background="@drawable/textview_background"
                     android:hint="@string/from"
                     android:padding="2dp" />
 
-            </LinearLayout>
+            </android.support.design.widget.TextInputLayout>
 
-            <LinearLayout
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/to_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                android:weightSum="1">
+                android:layout_margin="10dp">
 
-                <TextView
-                    android:id="@+id/text_to"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="@string/to"
-                    android:textColor="@color/primary_text" />
+                <!--<TextView-->
+                <!--android:id="@+id/text_to"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="0.5"-->
+                <!--android:text="@string/to"-->
+                <!--android:textColor="@color/primary_text" />-->
 
                 <AutoCompleteTextView
                     android:id="@+id/to"
-                    android:layout_width="96dp"
+                    android:layout_width="match_parent"
                     android:layout_height="36dp"
-                    android:layout_weight="0.5"
+                    android:layout_margin="10dp"
                     android:background="@drawable/textview_background"
                     android:hint="@string/to"
                     android:padding="2dp" />
 
 
-            </LinearLayout>
+            </android.support.design.widget.TextInputLayout>
 
 
             <Button
@@ -144,6 +140,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
+                android:layout_margin="10dp"
                 android:background="@drawable/custom_bg"
                 android:onClick="nextButtonClick"
                 android:shadowColor="@color/secondary_text"
@@ -172,6 +169,7 @@
             android:textStyle="bold" />
 
         <Button
+            android:onClick="getPhoneNumberExample"
             android:id="@+id/reload"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

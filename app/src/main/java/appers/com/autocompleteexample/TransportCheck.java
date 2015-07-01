@@ -1,13 +1,18 @@
 package appers.com.autocompleteexample;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,6 +32,14 @@ public class TransportCheck extends AppCompatActivity implements View.OnClickLis
     AutoCompleteTextView from, to;
     Toolbar toolbar;
     LinearLayout online, offline;
+    private LinearLayout mRoot;
+    private TextInputLayout mFrom_Input, mTo_Input;
+    View.OnClickListener mListner = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +91,9 @@ public class TransportCheck extends AppCompatActivity implements View.OnClickLis
         dial_us1 = (Button) findViewById(R.id.dial1);
         dial_us2 = (Button) findViewById(R.id.dial2);
         next = (Button) findViewById(R.id.next);
+        mRoot = (LinearLayout) findViewById(R.id.transport_root);
+        mFrom_Input = (TextInputLayout) findViewById(R.id.from_input);
+        mTo_Input = (TextInputLayout) findViewById(R.id.to_input);
     }
 
     public boolean onLine() {
@@ -122,24 +138,35 @@ public class TransportCheck extends AppCompatActivity implements View.OnClickLis
 
     }
 
+    private boolean isFrom() {
+        return from.getText() == null
+                || from.getText().toString() == null
+                || from.getText().toString().isEmpty();
+    }
+
+    private boolean isTo() {
+        return to.getText() == null
+                || to.getText().toString() == null
+                || to.getText().toString().isEmpty();
+    }
+
     public void nextButtonClick(View view) {
-        if (road.isChecked() || rail.isChecked()) {
-            if (!from.getText().toString().equals("") && !to.getText().toString().equals("")) {
-                startActivity(new Intent(this, DiagnosisActivity.class));
-                Log.d("from case", "its working");
-            } else Toast.makeText(this, "One More Fields are empty", Toast.LENGTH_LONG).show();
-        } else if (air.isChecked()) {
+        boolean isFromEmpty = isFrom();
+        boolean isToEmpty = isTo();
+        if (isFromEmpty && isToEmpty) {
 
-            if (charter.isChecked() || regular.isChecked()) {
-                if (!from.getText().toString().equals("") && !to.getText().toString().equals(""))
-                    startActivity(new Intent(this, DiagnosisActivity.class));
-            } else
-                Toast.makeText(this, "One More Fields are empty", Toast.LENGTH_LONG).show();
+            Snackbar.make(mRoot, "One More Field is Empty", Snackbar.LENGTH_SHORT).setAction("Dismiss", mListner).show();
+        } else if (isFromEmpty && !isToEmpty) {
+            mFrom_Input.setError("Enter City Name From");
+            mTo_Input.setError(null);
+
+        } else if (isTo() && !isFromEmpty) {
+            mTo_Input.setError("Enter City Name To");
+            mFrom_Input.setError(null);
         } else {
-            Toast.makeText(this, "One More Fields are empty", Toast.LENGTH_LONG).show();
-            Log.d("from case3", "its working");
+            //do what you want to do
+            startActivity(new Intent(this, DiagnosisActivity.class));
         }
-
 
     }
 
@@ -165,4 +192,27 @@ public class TransportCheck extends AppCompatActivity implements View.OnClickLis
     public void onBackPressed() {
         System.exit(0);
     }
+
+    public void getPhoneNumberExample(View view) {
+        String mNumber = getMyPhoneNumber();
+        Toast.makeText(this, "Your Phone Number Is" + mNumber, Toast.LENGTH_LONG).show();
+    }
+
+
+    private String getMyPhoneNumber() {
+        TelephonyManager tMgr = (TelephonyManager) getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
+        String mPhoneNumber = tMgr.getLine1Number();
+//        TelephonyManager mTelephonyMgr;
+//
+//        mTelephonyMgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+//        //String imsi = mTelephonyMgr.getSubscriberId();
+//        String phnNo = mTelephonyMgr.getLine1Number();
+        if (mPhoneNumber == null) {
+            mPhoneNumber = "NO PHONE NUmber is available";
+        }
+
+        return mPhoneNumber;
+    }
+
+
 }
