@@ -180,17 +180,12 @@ public class TransportCheck extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.dial2:
                 Uri number2 = Uri.parse("tel:97173525494");
-                Intent callIntent2 = new Intent(Intent.ACTION_DIAL, number2);
+                Intent callIntent2 = new Intent(Intent.ACTION_CALL, number2);
                 startActivity(callIntent2);
                 break;
             default:
                 Toast.makeText(this, "some kind of error!", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        System.exit(0);
     }
 
     public void getPhoneNumberExample(View view) {
